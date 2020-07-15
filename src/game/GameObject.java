@@ -10,10 +10,10 @@ import java.net.URISyntaxException;
 public class GameObject {
     public int x;
     public int y;
-    private int hp;
-    private int maxHp;
-    private int angle;
-    private Image image;
+    protected int hp;
+    protected int maxHp;
+    protected int angle;
+    protected Image image;
 
     public GameObject(int x, int y) {
         this.x = x;
@@ -22,7 +22,7 @@ public class GameObject {
         setImage();
     }
 
-    private void setImage(){
+    protected void setImage(){
         image = new Image(getClass().getClassLoader().getResourceAsStream("res/tower.png"), 100, 100, false, false);
     }
 
@@ -39,12 +39,12 @@ public class GameObject {
         drawRotatedImage(gc, image, angle, x, y);
     }
 
-    private void rotateGC(GraphicsContext gc, double angle, double px, double py) {
+    protected void rotateGC(GraphicsContext gc, double angle, double px, double py) {
         Rotate r = new Rotate(angle, px, py);
         gc.setTransform(r.getMxx(), r.getMyx(), r.getMxy(), r.getMyy(), r.getTx(), r.getTy());
     }
 
-    private void drawRotatedImage(GraphicsContext gc, Image image, double angle, double tlpx, double tlpy) {
+    protected void drawRotatedImage(GraphicsContext gc, Image image, double angle, double tlpx, double tlpy) {
         gc.save(); // saves the current state on stack, including the current transform
         rotateGC(gc, angle, tlpx + image.getWidth() / 2, tlpy + image.getHeight() / 2);
         gc.drawImage(image, tlpx, tlpy);
