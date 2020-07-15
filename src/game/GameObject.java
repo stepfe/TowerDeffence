@@ -13,11 +13,17 @@ public class GameObject {
     private int hp;
     private int maxHp;
     private int angle;
+    private Image image;
 
     public GameObject(int x, int y) {
         this.x = x;
         this.y = y;
         angle = 0;
+        setImage();
+    }
+
+    private void setImage(){
+        image = new Image(getClass().getClassLoader().getResourceAsStream("res/tower.png"), 100, 100, false, false);
     }
 
     public void nextFrame(){
@@ -30,18 +36,7 @@ public class GameObject {
 
     public void paint(GraphicsContext gc){
 
-        Image image = new Image(getClass().getClassLoader().getResourceAsStream("res/tower.png"), 500, 300, false, false);
-        //Rotate rotate = new Rotate();
-        //rotate.setAngle(45);
-//        gc.clearRect(0,0,800,500);
-//        gc.save(); // saves the current state on stack, including the current transform
-//        gc.rotate(angle);
-//        gc.drawImage(image, 0, 0);
-//        gc.restore();
-        drawRotatedImage(gc, image, angle, 0, 0);
-        //gc.drawImage(image,0,0);
-
-
+        drawRotatedImage(gc, image, angle, x, y);
     }
 
     private void rotateGC(GraphicsContext gc, double angle, double px, double py) {

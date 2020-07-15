@@ -22,7 +22,7 @@ public class Controller {
     }
 
     public void click(){
-        field.addGameObject(new GameObject(0, 0));
+        field.addGameObject(new GameObject(100, 100));
     }
 
     public void next(){
