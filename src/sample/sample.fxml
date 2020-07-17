@@ -7,8 +7,8 @@
 <?import javafx.scene.layout.VBox?>
 <VBox fx:controller="sample.Controller"
       xmlns:fx="http://javafx.com/fxml" alignment="TOP_LEFT">
-    <Label text="Wow wow?"/>
-    <Button fx:id="mainButton" text="Add" onAction="#click"/>
+    <Button fx:id="mainButton" text="Add tower" onAction="#click"/>
     <Button fx:id="nextButton" text="Next Frame" onAction="#next"/>
-    <Canvas width="800" height="300" fx:id="canvas" />
+    <Button fx:id="enemy" text="Add enemy" onAction="#addEnemy"/>
+    <Canvas width="800" height="300" fx:id="canvas" onMouseClicked="#addNewTower" onMouseMoved="#newCoord"/>
 </VBox>

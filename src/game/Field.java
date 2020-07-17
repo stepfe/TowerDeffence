@@ -6,28 +6,43 @@ import java.util.ArrayList;
 
 public class Field {
 
-    private ArrayList<GameObject> objects;
+    private ArrayList<GameObject> gameObjects;
     private GraphicsContext contextToDraw;
 
     public Field(GraphicsContext contextToDraw){
-        objects = new ArrayList<>();
+        gameObjects = new ArrayList<>();
         this.contextToDraw = contextToDraw;
     }
 
     public void addGameObject(GameObject go){
-        objects.add(go);
+            gameObjects.add(go);
     }
 
     public void nextFrame(){
-        for (GameObject obj: objects) {
-            obj.nextFrame();
-            obj.paint(contextToDraw);
+
+        contextToDraw.clearRect(0, 0, 800, 300);
+        for (GameObject gameObject: gameObjects) {
+            gameObject.nextFrame(gameObjects);
+            gameObject.paint(contextToDraw);
         }
+
+        ArrayList<GameObject> goToDelete = new ArrayList<>();//какой-то костыль
+        for (GameObject go: gameObjects) {
+            if (go.isDead()){
+                goToDelete.add(go);
+            }
+        }
+        for (GameObject go: goToDelete) {
+            gameObjects.remove(go);
+        }
+
     }
 
     public void paint(){
-        for (GameObject obj: objects) {
-            obj.paint(contextToDraw);
+        contextToDraw.clearRect(0, 0, 800, 300);
+
+        for (GameObject gameObject: gameObjects) {
+            gameObject.paint(contextToDraw);
         }
     }
 }
