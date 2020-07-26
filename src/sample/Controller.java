@@ -10,6 +10,11 @@ import javafx.scene.control.Button;
 import game.GameObject;
 import javafx.scene.input.MouseEvent;
 
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Controller {
     @FXML
     Button mainButton;
@@ -17,6 +22,8 @@ public class Controller {
     Button nextButton;
     @FXML
     Canvas canvas;
+    @FXML
+    Button startButton;
 
     private Field field;
     private Tower towerToAdd;
@@ -27,7 +34,7 @@ public class Controller {
     }
 
     public void click(){
-        towerToAdd = new Tower(0, 0);
+        towerToAdd = new Tower(300, 300);
     }
 
     public void next(){
@@ -50,5 +57,19 @@ public class Controller {
 
     public void addEnemy(ActionEvent actionEvent) {
         field.addGameObject(new Enemy(0, 0));
+    }
+
+    public void timer_tests(){
+
+        TimerTask task = new TimerTask() {
+            public void run() {
+                field.nextFrame();
+            }
+        };
+        Timer timer = new Timer("Timer");
+
+        long delay = 1000L;
+        long period = 100;
+        timer.schedule (task, delay,period);
     }
 }

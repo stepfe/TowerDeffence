@@ -55,6 +55,8 @@ public class GameObject {
         }else{
             setTarget(targets);
         }
+
+
     }
 
     protected void setTarget(ArrayList<GameObject> targets){

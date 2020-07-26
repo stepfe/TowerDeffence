@@ -10,5 +10,6 @@
     <Button fx:id="mainButton" text="Add tower" onAction="#click"/>
     <Button fx:id="nextButton" text="Next Frame" onAction="#next"/>
     <Button fx:id="enemy" text="Add enemy" onAction="#addEnemy"/>
+    <Button fx:id="startButton" text="Start timer" onAction="#timer_tests"/>
     <Canvas width="800" height="300" fx:id="canvas" onMouseClicked="#addNewTower" onMouseMoved="#newCoord"/>
 </VBox>
