@@ -73,4 +73,3 @@ public class Controller {
         timer.schedule (task, delay,period);
     }
 }
-//im gay
